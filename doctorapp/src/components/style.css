@@ -1,0 +1,446 @@
+/* Combined Header Container as a Floating Card */
+  .combined-container {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    color: #ffffff;
+    max-width: 1550px;
+    width: 90%;
+    margin: 40px auto;
+    /* Centers card with margins on the page */
+    border-radius: 24px;
+    /* Card border radius */
+    box-shadow: 0 12px 24px rgba(91, 33, 182, 0.15);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Ensures child elements clip to card corners */
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 72px;
+    /* Increased side padding slightly */
+    background-color: transparent;
+    /* Seamless transparent navbar */
+  }
+
+  .navbar-logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+
+  .navbar-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .navbar-buttons button {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    color: #7c3aed;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .navbar-buttons button:hover {
+    background-color: #f3e8ff;
+    border-color: #f3e8ff;
+    color: #6d28d9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Hero Content Styles */
+  .hero-content-wrapper {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 30px 72px 72px 72px;
+    /* Increased padding inside the card */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-text-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .hero-title {
+    font-family: Georgia, serif;
+    font-size: 76px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero-image-side {
+    flex: 0.8;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 400px;
+  }
+
+  .hero-image {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-image:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .combined-container {
+      width: 95%;
+      margin: 20px auto;
+    }
+
+    .hero-content-wrapper {
+      flex-direction: column;
+      padding: 20px 30px 60px 30px;
+      gap: 20px;
+    }
+
+    .hero-text-side {
+      text-align: center;
+    }
+
+    .hero-image-side {
+      justify-content: center;
+      height: 180px;
+      width: 100%;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+    }
+  }
+
+  /* Doctor Card Styles */
+  .doctor-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(124, 58, 237, 0.08);
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .doctor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px rgba(124, 58, 237, 0.12);
+    border-color: rgba(124, 58, 237, 0.2);
+  }
+
+  .doctor-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .doctor-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .doctor-card:hover .doctor-card-image {
+    transform: scale(1.04);
+  }
+
+  .doctor-info {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .doctor-name {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1e1b4b;
+    margin: 0;
+  }
+
+  .doctor-specialty {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+  }
+
+  .book-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(124, 58, 237, 0.15);
+    margin-top: 8px;
+  }
+
+  .book-btn:hover {
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(124, 58, 237, 0.25);
+  }
+
+  .book-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Grid Container to align perfectly with the header container */
+  .cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 56px;
+    max-width: 1550px;
+    width: 90%;
+    margin: 80px auto 0 auto;
+    padding: 0 0 80px 0;
+    box-sizing: border-box;
+    justify-items: center;
+  }
+
+  .doctor-gender {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+    /* Neutral gray */
+    margin: 0 0 12px 0;
+  }
+
+  @media (max-width: 1200px) {
+    .cards-section {
+      grid-template-columns: repeat(2, 1fr);
+      width: 90%;
+      padding: 0 0 60px 0;
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cards-section {
+      grid-template-columns: 1fr;
+      width: 95%;
+      padding: 0 0 40px 0;
+      gap: 24px;
+    }
+
+    .doctor-card {
+      max-width: 100%;
+    }
+  }
+
+  /* Add New Doctor Section */
+  .add-doctor-section {
+    max-width: 700px;
+    width: 90%;
+    margin: 40px auto 80px auto;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    padding: 44px;
+    box-sizing: border-box;
+  }
+
+  .add-doctor-section h2 {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 31px;
+    color: #1e1b4b;
+    margin: 0 0 28px 0;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .doctor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .doctor-form input,
+  .doctor-form select {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    padding: 15px 19px;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    outline: none;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .doctor-form input:focus,
+  .doctor-form select:focus {
+    border-color: #7c3aed;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+
+  .add-doctor-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(124, 58, 237, 0.15);
+    height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-doctor-btn:hover {
+    background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(124, 58, 237, 0.25);
+  }
+
+  .add-doctor-btn:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .add-doctor-section {
+      width: 95%;
+      padding: 24px;
+    }
+  }
+
+  /* Search & Filter Styling */
+  .search-filter-container {
+    display: flex;
+    gap: 16px;
+    max-width: 700px;
+    width: 90%;
+    margin: 40px auto 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-input,
+  .specialization-select {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    padding: 14px 20px;
+    border: 2px solid #ede9fe;
+    border-radius: 14px;
+    outline: none;
+    background-color: #ffffff;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.04);
+    color: #1e1b4b;
+  }
+
+  .search-input {
+    flex: 2;
+  }
+
+  .specialization-select {
+    flex: 1.2;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%237c3aed' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 16px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 44px;
+  }
+
+  .search-input:focus,
+  .specialization-select:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+    background-color: #ffffff;
+  }
+
+  .search-input::placeholder {
+    color: #94a3b8;
+  }
+
+  .no-doctors-msg {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #64748b;
+    text-align: center;
+    grid-column: 1 / -1;
+    margin: 40px 0;
+  }
+
+  @media (max-width: 600px) {
+    .search-filter-container {
+      flex-direction: column;
+      width: 95%;
+      gap: 12px;
+    }
+    .search-input,
+    .specialization-select {
+      width: 100%;
+    }
+  }
