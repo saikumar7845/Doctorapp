@@ -65,7 +65,7 @@ function App() {
               <div className="combined-container">
                 <Navbar />
               </div>
-              <Addnewdoctor doctors={doctors} setDoctors={setDoctors} />
+              <Addnewdoctor setDoctors={setDoctors} />
             </>
           } />
           <Route path='doctordetails/:id' element={

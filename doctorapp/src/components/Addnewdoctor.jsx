@@ -1,9 +1,8 @@
-import Home from './Home';
 import './style.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Addnewdoctor({ doctors, setDoctors }) {
+function Addnewdoctor({ setDoctors }) {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
@@ -51,7 +50,6 @@ function Addnewdoctor({ doctors, setDoctors }) {
                     <button type="submit" className="add-doctor-btn">Add Doctor</button>
                 </form>
             </div>
-            <Home doctors={doctors}></Home>
         </>
     )
 }
