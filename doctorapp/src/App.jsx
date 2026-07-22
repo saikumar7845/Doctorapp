@@ -10,6 +10,7 @@ import axios from 'axios'
 import ProtectedRoute from './components/ProtectedRoute'
 // import useCounter from './components/useCounter'
 
+/*
 const INITIAL_DOCTORS = [
   {
     id: 1,
@@ -39,9 +40,10 @@ const INITIAL_DOCTORS = [
     image: "/doctor_default.png"
   }
 ]
+*/
 
 function App() {
-  const [doctors, setDoctors] = useState(INITIAL_DOCTORS)
+  const [doctors, setDoctors] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem('isLoggedIn') === 'true'
   })
