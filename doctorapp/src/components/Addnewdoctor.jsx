@@ -1,56 +1,75 @@
-import './style.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Addnewdoctor({ setDoctors }) {
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [gender, setGender] = useState('');
-    const [specialization, setSpecialization] = useState('');
-    const [salary, setSalary] = useState('');
-    
-    const navigate = useNavigate();
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
+    const [gender, setGender] = useState('')
+    const [specialization, setSpecialization] = useState('')
+    const [salary, setSalary] = useState('')
+    const [image, setImage] = useState('')
 
-    function handleAddDoctor(e) {
-        e.preventDefault();
-        let formdetails = { 
-            id: Date.now(), 
-            name, 
-            age: parseInt(age), 
-            gender, 
-            specialization, 
-            salary: parseInt(salary),
-            image: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&q=80&w=600"
-        };
-        setDoctors(prev => [...prev, formdetails]);
-        
-        setName('');
-        setAge('');
-        setGender('');
-        setSpecialization('');
-        setSalary('');
-        
-        navigate('/');
+    const navigate = useNavigate()
+
+    async function handleform(e) {
+        e.preventDefault()
+        let formdetails = {
+            name,
+            age: parseInt(age) || age,
+            gender,
+            specialization,
+            salary: parseInt(salary) || salary,
+            image: image || "/doctor_default.png"
+        }
+
+        let addedDoctor = { ...formdetails, id: Date.now() };
+
+        try {
+            const res = await axios.post('https://doc-back.onrender.com/doctors', formdetails)
+            if (res.data && res.data.id) {
+                addedDoctor = res.data;
+            }
+            alert('Doctor added successfully!')
+        } catch (error) {
+            console.error('Error posting to API:', error)
+            alert('Failed to post to API server, updated locally.')
+        }
+
+        if (setDoctors) {
+            setDoctors(prev => [...prev, addedDoctor])
+        }
+
+        // Reset form fields
+        setName('')
+        setAge('')
+        setGender('')
+        setSpecialization('')
+        setSalary('')
+        setImage('')
+
+        // Navigate back to home page
+        navigate('/')
     }
+
     return (
-        <>
-            <div className="add-doctor-section">
-                <h2>Add New Doctor</h2>
-                <form className="doctor-form" onSubmit={handleAddDoctor}>
-                    <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter Doctor Name" required />
-                    <input value={age} onChange={(e) => setAge(e.target.value)} type="number" placeholder="Enter Age" required />
-                    <select value={gender} onChange={(e) => setGender(e.target.value)} name="gender" required>
-                        <option value="" disabled>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="others">Others</option>
-                    </select>
-                    <input value={specialization} onChange={(e) => setSpecialization(e.target.value)} name="specialization" type="text" placeholder="Enter Specialization" required />
-                    <input value={salary} onChange={(e) => setSalary(e.target.value)} name="salary" type="number" placeholder="Enter Salary" required />
-                    <button type="submit" className="add-doctor-btn">Add Doctor</button>
-                </form>
-            </div>
-        </>
+        <div>
+            <h1>Add New Doctor</h1>
+            <form className='form-container' onSubmit={handleform}>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Doctor name' required />
+                <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder='Enter Age' required />
+                <select value={gender} onChange={(e) => setGender(e.target.value)} required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+                <input type="text" value={specialization} onChange={(e) => setSpecialization(e.target.value)} placeholder='Enter Specialization' required />
+                <input type="number" value={salary} onChange={(e) => setSalary(e.target.value)} placeholder='Enter Salary' required />
+                <input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder='Enter Image URL (optional)' />
+                <button type='submit'>Add Doctor</button>
+            </form>
+        </div>
     )
 }
 
